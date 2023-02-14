@@ -1,30 +1,37 @@
 import requests
 from bs4 import BeautifulSoup
 
+# Main class in html/devices - js-product t-store__card t-col t-col_4 t-align_center t-item
+# class for img - t-store__card__img t-store__card__img_second t-img loaded
+
 with open('devices.html', 'r', encoding="utf8") as f:
     contents = f.read()
     soup = BeautifulSoup(contents, 'lxml')
+    divs = soup.find_all("div", {'js-product t-store__card t-col t-col_4 t-align_center t-item'})
+
     names_disordered = soup.find_all("div", {"class":"js-store-prod-name js-product-name t-store__card__title t-name t-name_md"})
     price_disordered = soup.find_all("div", {"class":"js-product-price js-store-prod-price-val t-store__card__price-value notranslate"})
 
 price = list()
 names = list()
+img_src = list()
 
-
-for i in range(0, len(price_disordered)):
-    n = names_disordered[i].text.split('\n')
-    p = price_disordered[i].text.split('\n')
-    names.append(str(n[0]))
-    price.append(str(p[0]))
-
-for i in range(0, len(price_disordered)):
-    print(names[i], price[i])
-#print(price[0].text)
+c = 0
+for div in divs:
+    names.append((div.find("div", {"class":"js-store-prod-name js-product-name t-store__card__title t-name t-name_md"}).text.split('\n'))[0])
+    price.append((div.find("div", {"class":"js-product-price js-store-prod-price-val t-store__card__price-value notranslate"}).text.split('\n'))[0])
+    img_src.append(str(div.find("img")).split(" ")[5].split("="))
 
 
 
-# Получаем все элементы с классом 'device-name'
-#device_names = soup.find('div', {'class':'js-store-prod-name js-product-name t-store__card__title t-name t-name_md'})
-# Печатаем имена устройств
-# for device_name in device_names:
-#     print(device_name.text)
+
+
+for i in img_src:
+    c += 1
+    print(c)
+    print(i)
+
+# for i in range(0, len(price_disordered)):
+#     print(names[i], price[i])
+
+
