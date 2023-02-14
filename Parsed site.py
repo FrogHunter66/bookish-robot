@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 # Main class in html/devices - js-product t-store__card t-col t-col_4 t-align_center t-item
 # class for img - t-store__card__img t-store__card__img_second t-img loaded
-
+#
 with open('devices.html', 'r', encoding="utf8") as f:
     contents = f.read()
     soup = BeautifulSoup(contents, 'lxml')
