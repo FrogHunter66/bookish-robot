@@ -8,7 +8,7 @@ with open('devices.html', 'r', encoding="utf8") as f:
     soup = BeautifulSoup(contents, 'lxml')
     divs = soup.find_all("div", {'js-product t-store__card t-col t-col_4 t-align_center t-item'})
 
-    # names_disordered = soup.find_all("div", {"class":"js-store-prod-name js-product-name t-store__card__title t-name t-name_md"})
+    names_disordered = soup.find_all("div", {"class":"js-store-prod-name js-product-name t-store__card__title t-name t-name_md"})
     # price_disordered = soup.find_all("div", {"class":"js-product-price js-store-prod-price-val t-store__card__price-value notranslate"})
 
 price = list()
