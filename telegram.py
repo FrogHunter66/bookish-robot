@@ -45,7 +45,7 @@ def main(message):
 
     else:
         bot.send_message(message.chat.id, text="Напииш ч")
-
+# g
 def catalog_devices(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     back = types.KeyboardButton("Вернуться в главное меню")
